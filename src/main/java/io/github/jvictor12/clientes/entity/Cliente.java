@@ -1,10 +1,11 @@
 package io.github.jvictor12.clientes.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 
@@ -22,13 +23,15 @@ public class Cliente extends AbstractEntity {
     private String nome;
 
     @NotEmpty
+    @CPF
     private String cpf;
 
-    @NotNull
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
 
     @PrePersist
-    public void prePersist(){
-        setDataCadastro(LocalDate.now());
-    }
+    public void prePersist(){ this.dataCadastro = LocalDate.now(); }
+
+    @PreUpdate
+    public void preUpdate() { this.dataCadastro = LocalDate.now(); }
 }

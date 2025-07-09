@@ -21,7 +21,7 @@ public class ClienteController {
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable Long id){ return ResponseEntity.status(HttpStatus.OK).body(clienteService.findById(id)); }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity update(@RequestBody @Valid Cliente cliente){
         return ResponseEntity.status(HttpStatus.OK).body(clienteService.update(cliente));
     }
@@ -31,7 +31,7 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteService.save(cliente));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id){
         clienteService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body(null);

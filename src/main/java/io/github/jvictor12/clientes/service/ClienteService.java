@@ -27,7 +27,9 @@ public class ClienteService {
             throw new ValidationException("Cliente inválido");
         }
 
-        clienteRepository.save(cliente);
+        if (validationCliente(cliente)){
+            return clienteRepository.save(cliente);
+        }
 
         return cliente;
     }
@@ -41,7 +43,9 @@ public class ClienteService {
             throw new ObjectNotFoundException("O cliente não foi encontrado");
         }
 
-        clienteRepository.save(cliente);
+        if(validationCliente(cliente)){
+            return clienteRepository.save(cliente);
+        }
 
         return cliente;
     }
@@ -55,5 +59,15 @@ public class ClienteService {
         }
 
         clienteRepository.deleteById(id);
+    }
+
+    public boolean validationCliente(Cliente cliente) {
+        Cliente clienteCPF = clienteRepository.findByCpf(cliente.getCpf());
+
+        if(clienteCPF != null && !clienteCPF.equals(cliente)){
+           throw new ValidationException("CPF ja cadastrado no sistema");
+        }
+
+        return true;
     }
 }
