@@ -3,14 +3,9 @@ package io.github.jvictor12.clientes.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
-import org.hibernate.validator.constraints.br.CPF;
-
 import java.time.LocalDate;
 
-
-@ToString
 @Builder
 @Getter
 @Setter
@@ -19,11 +14,11 @@ import java.time.LocalDate;
 @Entity (name = "tb_clientes")
 public class Cliente extends AbstractEntity {
 
-    @NotEmpty
+    @Column(name = "nome", nullable = false, length = 100)
     private String nome;
 
-    @NotEmpty
-    @CPF
+    @Column(name = "cpf", nullable = false, length = 14)
+    @JsonFormat(pattern = "000.000.000-00")
     private String cpf;
 
     @JsonFormat(pattern = "dd/MM/yyyy")

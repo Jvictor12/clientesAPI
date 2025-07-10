@@ -2,18 +2,21 @@ package io.github.jvictor12.clientes.controller;
 
 import io.github.jvictor12.clientes.entity.Cliente;
 import io.github.jvictor12.clientes.service.ClienteService;
+import io.github.jvictor12.clientes.utils.ClienteMapperUtils;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/clientes")
-public class ClienteController {
+@RequiredArgsConstructor
+public class ClienteController{
 
-    @Autowired
-    private ClienteService clienteService;
+    private final ClienteService clienteService;
+
+    private final ClienteMapperUtils clienteMapperUtils;
 
     @GetMapping
     public ResponseEntity findAll(){ return ResponseEntity.status(HttpStatus.OK).body(clienteService.findAll()); }
