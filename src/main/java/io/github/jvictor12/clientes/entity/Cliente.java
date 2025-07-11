@@ -18,6 +18,12 @@ public class Cliente extends AbstractEntity {
     @Column(name = "nome", nullable = false, length = 100)
     private String nome;
 
+    @Column(name = "login", nullable = false, length = 30)
+    private String login;
+
+    @Column(name = "password", nullable = false, length = 30)
+    private String password;
+
     @Column(name = "cpf", nullable = false, length = 14)
     @JsonFormat(pattern = "000.000.000-00")
     private String cpf;
@@ -26,6 +32,7 @@ public class Cliente extends AbstractEntity {
     @Column(name = "tipo", nullable = false, length = 10)
     private ClienteType tipo;
 
+    @Column(name = "dataCadastro", nullable = false, length = 10)
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
 
