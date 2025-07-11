@@ -2,6 +2,7 @@ package io.github.jvictor12.clientes.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.github.jvictor12.clientes.enums.ClienteType;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
@@ -20,6 +21,10 @@ public class Cliente extends AbstractEntity {
     @Column(name = "cpf", nullable = false, length = 14)
     @JsonFormat(pattern = "000.000.000-00")
     private String cpf;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo", nullable = false, length = 10)
+    private ClienteType tipo;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
