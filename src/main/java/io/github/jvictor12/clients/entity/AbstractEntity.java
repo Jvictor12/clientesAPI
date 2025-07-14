@@ -35,12 +35,12 @@ public abstract class AbstractEntity {
     private LocalDateTime lastModifiedDate;
 
     @CreatedBy
-    @Column(name = "created_by_user", updatable = false, length = 100)
-    private String createdByUser;
+    @Column(name = "created_by_client", updatable = false, length = 100)
+    private String createdByClient;
 
     @LastModifiedBy
-    @Column(name = "modified_by_user", length = 100)
-    private String modifiedByUser;
+    @Column(name = "modified_by_client", length = 100)
+    private String modifiedByClient;
 
     @Override
     public boolean equals(Object o) {

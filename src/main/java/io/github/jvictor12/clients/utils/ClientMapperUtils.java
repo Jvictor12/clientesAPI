@@ -15,5 +15,5 @@ public class ClientMapperUtils {
 
     public Client toModel (ClientRequest clientRequest) { return mapper.convertValue(clientRequest, Client.class); }
 
-    public ClientResponse fromModel (Client client) { return mapper.convertValue(cliente, ClienteResponse.class); }
+    public ClientResponse fromModel (Client client) { return mapper.convertValue(client, ClientResponse.class); }
 }

@@ -2,11 +2,11 @@ package io.github.jvictor12.clients.dtos.request;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class AbstractRequest {
