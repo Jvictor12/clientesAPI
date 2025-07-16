@@ -25,20 +25,18 @@ public class Client extends AbstractEntity {
     private String password;
 
     @Column(name = "cpf", nullable = false, length = 14)
-    @JsonFormat(pattern = "000.000.000-00")
     private String cpf;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false, length = 10)
     private ClientType type;
 
-    @Column(name = "RegistrationDate", nullable = false, length = 10)
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate RegistrationDate;
+    @Column(name = "RegistrationDate", length = 10)
+    private LocalDate registrationDate;
 
     @PrePersist
-    public void prePersist(){ this.RegistrationDate = LocalDate.now(); }
+    public void prePersist(){ this.registrationDate = LocalDate.now(); }
 
     @PreUpdate
-    public void preUpdate() { this.RegistrationDate = LocalDate.now(); }
+    public void preUpdate() { this.registrationDate = LocalDate.now(); }
 }

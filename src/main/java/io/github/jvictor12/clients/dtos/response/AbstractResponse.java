@@ -14,5 +14,5 @@ import java.util.UUID;
 @AllArgsConstructor
 public abstract class AbstractResponse {
     private UUID id;
-    private LocalDate dataCadastro;
+    private LocalDate registrationDate;
 }
